@@ -15,6 +15,7 @@
 
 #include "libunwind.h"
 
+#include "AddressSpace.hpp"
 #include "DwarfParser.hpp"
 
 namespace libunwind {
@@ -84,7 +85,7 @@ bool EHHeaderParser<A>::decodeTableEntry(
   const char *message =
       CFI_Parser<A>::decodeFDE(addressSpace, fde, fdeInfo, cieInfo);
   if (message != NULL) {
-    _LIBUNWIND_DEBUG_LOG("EHHeaderParser::decodeTableEntry: bad fde: %s",
+    _LIBUNWIND_DEBUG_LOG("EHHeaderParser::decodeTableEntry: bad fde: %s\n",
                          message);
     return false;
   }
